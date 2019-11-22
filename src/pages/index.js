@@ -238,7 +238,7 @@ const Index = () => {
       />
       <Flex
         bg={state.matches('playing.correct') ? 'success' : 'black'}
-        p={4}
+        p={[3, 4]}
         sx={{
           height: '100%',
           flexDirection: 'column',
@@ -279,7 +279,7 @@ const Index = () => {
                   <Label
                     sx={{
                       marginTop: 4,
-                      display: 'flex',
+                      display: ['none', 'flex'],
                       flexDirection: 'column',
                       maxWidth: 400,
                     }}
@@ -312,7 +312,7 @@ const Index = () => {
                 )}
                 <Button
                   sx={{
-                    marginTop: 5,
+                    marginTop: 4,
                     transition: '.2s ease all',
                     outline: 'none',
                     '&:hover, &:focus': {
@@ -339,18 +339,11 @@ const Index = () => {
             )}
             {state.matches('playing') && (
               <>
-                <Text sx={{ fontSize: 100, fontWeight: 'bold' }}>
+                <Text sx={{ fontSize: [80, 120], fontWeight: 'bold' }}>
                   {state.context.currentChord.name
                     .replace(/\s+minor/, 'm')
                     .replace(/\s+major/, '')}
                 </Text>
-                <h3>
-                  {(
-                    (100 * state.context.playedChords.length) /
-                    chords.length
-                  ).toFixed(0)}
-                  %
-                </h3>
               </>
             )}
 
@@ -390,6 +383,7 @@ const Index = () => {
             <Suspense fallback={<Spinner />}>
               <Piano
                 startNote="C3"
+                progress={state.context.playedChords.length / chords.length}
                 endNote={endNote}
                 input={inputs[selectedInputIndex] || null}
                 state={state}

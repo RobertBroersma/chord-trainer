@@ -5,19 +5,29 @@ import { css } from 'theme-ui'
 
 import PianoComponent from 'react-piano-component'
 
-const PianoContainerStyles = styled.div(
+const PianoContainerStyles = styled.div(({ progress }) =>
   css({
     display: 'inline-flex',
     boxSizing: 'border-box',
-    borderTop: '10px solid',
     borderColor: 'success',
     position: 'relative',
     margin: 'auto',
+    maxWidth: '100%',
+    borderTop: '10px solid rgba(0, 0, 0, 0.5)',
+    ':before': {
+      content: "''",
+      transition: '.4s ease all',
+      width: `${progress * 100}%`,
+      height: '10px',
+      backgroundColor: 'success',
+      position: 'absolute',
+      top: '-10px',
+    },
     ':after': {
       content: "''",
       width: '100%',
       height: '5px',
-      backgroundColor: 'rgba(68, 68, 68, 0.1)',
+      backgroundColor: 'rgba(68, 68, 68, 0.2)',
       position: 'absolute',
       top: '0',
     },
@@ -107,9 +117,12 @@ const KeyText = styled.div(
   }),
 )
 
-function PianoContainer({ children }) {
+function PianoContainer({ children, ...rest }) {
   return (
-    <PianoContainerStyles onMouseDown={event => event.preventDefault()}>
+    <PianoContainerStyles
+      onMouseDown={event => event.preventDefault()}
+      {...rest}
+    >
       {children}
     </PianoContainerStyles>
   )
@@ -196,6 +209,7 @@ export const Piano = ({
   onStopNote,
   currentChord,
   input,
+  progress,
   ...rest
 }) => {
   const notes = useRef({})
@@ -244,7 +258,7 @@ export const Piano = ({
   }
 
   return (
-    <PianoContainer>
+    <PianoContainer progress={progress}>
       <PianoComponent
         renderPianoKey={PianoKey({
           state,
