@@ -303,11 +303,12 @@ const Index = () => {
                 ) : (
                   <Text
                     sx={{
+                      display: ['none', 'flex'],
                       marginTop: 4,
                       fontSize: 5,
                     }}
                   >
-                    Connect a MIDI Keyboard
+                    Connect a MIDI Keyboard and refresh the page!
                   </Text>
                 )}
                 <Button
