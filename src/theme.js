@@ -9,6 +9,7 @@ export default {
     error: '#FE5F55',
     success: '#59CD90',
     white: '#ffffff',
+    lightGray: '#cccccc',
     black: '#291F1E',
     gray: '#333745',
   },
@@ -22,6 +23,14 @@ export default {
       minWidth: 180,
       textTransform: 'uppercase',
       height: 72,
+    },
+  },
+  links: {
+    primary: {
+      color: 'white',
+      '&:hover, &:focus': {
+        color: 'lightGray',
+      },
     },
   },
 }

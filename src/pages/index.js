@@ -2,8 +2,6 @@ import React, { useState, useEffect, useCallback, Suspense } from 'react'
 import { Helmet } from 'react-helmet'
 import WebMidi from 'webmidi'
 
-import { Global } from '@emotion/core'
-import { ThemeProvider } from 'theme-ui'
 import {
   Box,
   Flex,
@@ -12,13 +10,14 @@ import {
   Select,
   Label,
   Spinner,
+  Link,
 } from '@theme-ui/components'
 
 import { chord } from '@tonaljs/chord'
+import { Link as GatsbyLink } from 'gatsby'
 import { simplify, enharmonic } from '@tonaljs/note'
 import { Machine, assign } from 'xstate'
 import { useMachine } from '@xstate/react'
-import theme from '../theme'
 import { useMedia } from '../hooks/useMedia'
 
 const Piano = React.lazy(() => import('../components/Piano'))
@@ -217,38 +216,15 @@ const Index = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Global
-        styles={theme => ({
-          html: {
-            height: '100%',
-          },
-          body: {
-            margin: 0,
-            height: '100%',
-            fontFamily: theme.fonts.body,
-            color: theme.colors.white,
-          },
-          'body > div, body > div > div': {
-            height: '100%',
-          },
-        })}
-      />
+    <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <html lang="en" />
-        <title>Piano Chord Trainer</title>
-        <meta
-          name="description"
-          content="Practice chords by playing them on a real or virtual piano."
-        />
         <link rel="canonical" href="https://chord-trainer.netlify.com/" />
       </Helmet>
       <Flex
         bg={state.matches('playing.correct') ? 'success' : 'black'}
         p={[3, 4]}
         sx={{
-          height: '100%',
+          minHeight: '100%',
           flexDirection: 'column',
           transition: '.2s ease background',
         }}
@@ -405,8 +381,33 @@ const Index = () => {
             </Suspense>
           )}
         </Flex>
+        <Flex
+          sx={{
+            justifyContent: 'center',
+            p: 3,
+          }}
+        >
+          <Text color="lightGray" sx={{ textAlign: 'center' }}>
+            Created with{' '}
+            <span role="img" aria-label="musical note">
+              🎵
+            </span>{' '}
+            by{' '}
+            <Link
+              variant="primary"
+              href="https://twitter.com/robertbrosma"
+              target="_blank"
+            >
+              @robertbrosma
+            </Link>{' '}
+            using{' '}
+            <Link variant="primary" as={GatsbyLink} to="/credits">
+              these awesome tools
+            </Link>
+          </Text>
+        </Flex>
       </Flex>
-    </ThemeProvider>
+    </>
   )
 }
 

@@ -22,7 +22,6 @@
     "react-helmet": "^5.2.1",
     "react-piano-component": "^0.1.4",
     "theme-ui": "^0.2.49",
-    "tone": "^13.8.25",
     "webmidi": "^2.5.1",
     "xstate": "^4.6.7"
   },
