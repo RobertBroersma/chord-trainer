@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, Suspense } from 'react'
+import { Helmet } from 'react-helmet'
 import WebMidi from 'webmidi'
 
 import { Global } from '@emotion/core'
@@ -233,6 +234,16 @@ const Index = () => {
           },
         })}
       />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <html lang="en" />
+        <title>Piano Chord Trainer</title>
+        <meta
+          name="description"
+          content="Practice chords by playing them on a real or virtual piano."
+        />
+        <link rel="canonical" href="https://chord-trainer.netlify.com/" />
+      </Helmet>
       <Flex
         bg={state.matches('playing.correct') ? 'success' : 'black'}
         p={[3, 4]}

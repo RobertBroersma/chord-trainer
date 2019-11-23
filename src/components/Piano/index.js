@@ -72,7 +72,7 @@ const AccidentalKeyStyles = styled.button(({ isPlaying, isCorrect }) =>
   }),
 )
 
-const NaturalKeyStyles = styled.div(({ isPlaying, isCorrect }) =>
+const NaturalKeyStyles = styled.button(({ isPlaying, isCorrect }) =>
   css({
     cursor: 'pointer',
     background: '#fafafa',
@@ -128,10 +128,11 @@ function PianoContainer({ children, ...rest }) {
   )
 }
 
-function AccidentalKey({ isPlaying, isCorrect, text, eventHandlers }) {
+function AccidentalKey({ note, isPlaying, isCorrect, text, eventHandlers }) {
   return (
     <AccidentalKeyWrapper>
       <AccidentalKeyStyles
+        aria-label={note}
         isPlaying={isPlaying}
         isCorrect={isCorrect}
         {...eventHandlers}
@@ -142,9 +143,10 @@ function AccidentalKey({ isPlaying, isCorrect, text, eventHandlers }) {
   )
 }
 
-function NaturalKey({ isPlaying, isCorrect, text, eventHandlers }) {
+function NaturalKey({ note, isPlaying, isCorrect, text, eventHandlers }) {
   return (
     <NaturalKeyStyles
+      aria-label={note}
       isPlaying={isPlaying}
       isCorrect={isCorrect}
       {...eventHandlers}
@@ -195,6 +197,7 @@ const PianoKey = ({ registerNote, onPlayNote, onStopNote, currentChord }) => ({
 
   return (
     <KeyComponent
+      note={note}
       isCorrect={isCorrect}
       isPlaying={isNotePlaying}
       text={keyboardShortcuts.join(' / ')}

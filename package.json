@@ -15,13 +15,19 @@
     "@xstate/react": "^0.8.1",
     "gatsby": "^2.18.1",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-react-helmet": "^3.1.15",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
     "react-piano-component": "^0.1.4",
     "theme-ui": "^0.2.49",
     "tone": "^13.8.25",
     "webmidi": "^2.5.1",
     "xstate": "^4.6.7"
+  },
+  "resolutions": {
+    "**/lodash": "4.17.15"
   },
   "scripts": {
     "dev": "gatsby develop",
