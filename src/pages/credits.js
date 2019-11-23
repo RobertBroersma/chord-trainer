@@ -25,7 +25,7 @@ const Credits = () => {
         <Text as="h1">Big thanks to the authors of these tools!</Text>
         <Flex sx={{ flexDirection: 'column', height: '100%', flex: 1 }} mt={3}>
           <Link variant="primary" target="blank" href="https://xstate.js.org/">
-            Xstate
+            XState
           </Link>
           <Link
             variant="primary"
