@@ -55,6 +55,9 @@ const Credits = () => {
           >
             Theme-UI
           </Link>
+          <Link variant="primary" target="blank" href="https://netlify.com">
+            Netlify
+          </Link>
           <Box mt="auto">
             <Link variant="primary" as={GatsbyLink} to="/">
               Back to the app
