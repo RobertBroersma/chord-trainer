@@ -381,31 +381,33 @@ const Index = () => {
             </Suspense>
           )}
         </Flex>
-        <Flex
-          sx={{
-            justifyContent: 'center',
-            p: 3,
-          }}
-        >
-          <Text color="lightGray" sx={{ textAlign: 'center' }}>
-            Created with{' '}
-            <span role="img" aria-label="musical note">
-              🎵
-            </span>{' '}
-            by{' '}
-            <Link
-              variant="primary"
-              href="https://twitter.com/robertbrosma"
-              target="_blank"
-            >
-              @robertbrosma
-            </Link>{' '}
-            using{' '}
-            <Link variant="primary" as={GatsbyLink} to="/credits">
-              these awesome tools
-            </Link>
-          </Text>
-        </Flex>
+        {(state.matches('config') || state.matches('finished')) && (
+          <Flex
+            sx={{
+              justifyContent: 'center',
+              p: 3,
+            }}
+          >
+            <Text color="lightGray" sx={{ textAlign: 'center' }}>
+              Created with{' '}
+              <span role="img" aria-label="musical note">
+                🎵
+              </span>{' '}
+              by{' '}
+              <Link
+                variant="primary"
+                href="https://twitter.com/robertbrosma"
+                target="_blank"
+              >
+                @robertbrosma
+              </Link>{' '}
+              using{' '}
+              <Link variant="primary" as={GatsbyLink} to="/credits">
+                these awesome tools
+              </Link>
+            </Text>
+          </Flex>
+        )}
       </Flex>
     </>
   )
