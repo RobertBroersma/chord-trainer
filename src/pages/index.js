@@ -289,10 +289,11 @@ const Index = () => {
                     sx={{
                       display: ['none', 'flex'],
                       marginTop: 4,
-                      fontSize: 5,
+                      fontSize: 4,
                     }}
                   >
-                    Connect a MIDI Keyboard and refresh the page!
+                    Connect a MIDI Keyboard and refresh the page, or play
+                    without one!
                   </Text>
                 )}
                 <Button
