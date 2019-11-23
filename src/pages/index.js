@@ -185,12 +185,9 @@ const Index = () => {
     })
   }, [])
 
-  const setInput = useCallback(
-    e => {
-      setSelectedInputIndex(e.target.value)
-    },
-    [inputs],
-  )
+  const setInput = useCallback(e => {
+    setSelectedInputIndex(e.target.value)
+  }, [])
 
   useEffect(() => {
     state.actions.forEach(action => {
@@ -245,7 +242,7 @@ const Index = () => {
           transition: '.2s ease background',
         }}
       >
-        {(state.matches('playing') || state.matches('finished')) && (
+        {state.matches('playing') && (
           <Box
             sx={{
               position: 'absolute',
@@ -350,8 +347,10 @@ const Index = () => {
 
             {state.matches('finished') && (
               <>
-                <Text sx={{ fontSize: 8, fontWeight: 'bold' }}>FINISHED!</Text>
-                <Text sx={{ fontSize: 8, fontWeight: 'bold' }}>
+                <Text sx={{ fontSize: [5, 8], fontWeight: 'bold' }}>
+                  FINISHED!
+                </Text>
+                <Text sx={{ fontSize: [6, 8], fontWeight: 'bold' }}>
                   <Timer startTime={state.context.startTime} />
                 </Text>
                 <Button

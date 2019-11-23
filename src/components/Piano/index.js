@@ -162,7 +162,8 @@ const PianoKey = ({ registerNote, onPlayNote, onStopNote, currentChord }) => ({
   stopPlayingNote,
   keyboardShortcuts,
 }) => {
-  const toggleNote = () => {
+  const toggleNote = e => {
+    e.preventDefault()
     if (isNotePlaying) {
       onStopNote(note.replace(/\d/, ''))
       stopPlayingNote()
@@ -184,7 +185,6 @@ const PianoKey = ({ registerNote, onPlayNote, onStopNote, currentChord }) => ({
   const eventHandlers = {
     onMouseDown: toggleNote,
     onMouseEnter: handleMouseEnter,
-    onTouchStart: toggleNote,
   }
 
   const isCorrect = currentChord.notes.find(
